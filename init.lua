@@ -91,10 +91,17 @@ require('which-key').setup({
 })
 require('fidget').setup()
 require('mason').setup()
-require('mini.pick').setup()
 require('mini.statusline').setup({ use_icons = false })
 require('oil').setup()
 require('todo-comments').setup({ signs = false })
+
+require('mini.pick').setup()
+local builtin = require('mini.pick').builtin
+
+vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Pick open [B]uffers' })
+vim.keymap.set('n', '<leader>f', builtin.files, { desc = 'Pick [F]iles' })
+vim.keymap.set('n', '<leader>h', builtin.help, { desc = 'Pick [H]elp' })
+vim.keymap.set('n', '<leader>g', builtin.grep_live, { desc = 'Pick [G]rep' })
 
 -- Disable showmode, as statusline contains it
 vim.o.showmode = false
@@ -114,8 +121,6 @@ vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
 vim.cmd.colorscheme('tokyonight')
 
-vim.keymap.set('n', '<leader>f', ':Pick files<CR>')
-vim.keymap.set('n', '<leader>h', ':Pick help<CR>')
 vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
