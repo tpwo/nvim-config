@@ -92,6 +92,7 @@ vim.pack.add({
     { src = 'https://github.com/folke/todo-comments.nvim' },
     { src = 'https://github.com/folke/which-key.nvim' },
     { src = 'https://github.com/j-hui/fidget.nvim' },
+    { src = 'https://github.com/lewis6991/gitsigns.nvim' },
     { src = 'https://github.com/mason-org/mason.nvim' },
     { src = 'https://github.com/mbbill/undotree' },
     { src = 'https://github.com/neovim/nvim-lspconfig' },
@@ -101,6 +102,13 @@ vim.pack.add({
     { src = 'https://github.com/folke/tokyonight.nvim' },
 })
 
+require("gitsigns").setup({
+    signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
     },
 })
 
