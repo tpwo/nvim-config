@@ -397,7 +397,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 vim.cmd('set completeopt+=noselect')
 
-vim.lsp.enable({ 'lua_ls' })
+-- Remember that you have to install below LSPs manually (easiest way is to use :Mason)
+vim.lsp.enable({ 'lua_ls', 'pyright' })
+
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
 vim.cmd.colorscheme('tokyonight')
