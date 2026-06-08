@@ -98,11 +98,21 @@ vim.pack.add({
     { src = 'https://github.com/neovim/nvim-lspconfig' },
     { src = 'https://github.com/nvim-mini/mini.statusline',               version = 'stable' },
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
+    { src = 'https://github.com/stevearc/conform.nvim' },
     { src = 'https://github.com/stevearc/oil.nvim' },
 
     { src = 'https://github.com/folke/tokyonight.nvim' },
 })
 
+require('conform').setup({
+  formatters_by_ft = {
+    lua = { "stylua" },
+  },
+})
+
+vim.keymap.set('n', '<leader>f', function()
+  require('conform').format({ async = true, lsp_fallback = true })
+end, { desc = 'Format buffer' })
 
 -- ensure basic parser are installed
 local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
@@ -449,8 +459,6 @@ vim.cmd('set completeopt+=noselect')
 
 -- Remember that you have to install below LSPs manually (easiest way is to use :Mason)
 vim.lsp.enable({ 'lua_ls', 'pyright' })
-
-vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
 vim.cmd.colorscheme('tokyonight')
 
