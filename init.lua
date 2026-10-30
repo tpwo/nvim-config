@@ -78,6 +78,10 @@ vim.api.nvim_create_autocmd('PackChanged', {
   callback = build_fzf,
 })
 
+vim.api.nvim_create_user_command('PackUpdate', function() vim.pack.update() end, {
+  desc = 'Update all Neovim built-in packages',
+})
+
 vim.pack.add {
   -- Telescope with its deps and recommended fzf-native plugin
   { src = 'https://github.com/nvim-telescope/telescope.nvim' },
