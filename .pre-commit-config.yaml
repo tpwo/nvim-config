@@ -1,0 +1,18 @@
+repos:
+- repo: https://github.com/JohnnyMorganz/StyLua
+  rev: v2.6.0
+  hooks:
+  - id: stylua-github
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.16.0
+  hooks:
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, '2']
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v6.0.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: mixed-line-ending
+    args: [--fix, lf]
+  - id: check-yaml
